@@ -1,34 +1,39 @@
 ﻿using System;
-using System.Linq;
+using Cocona;
 
-namespace git_links
+class Program
 {
-    class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            if (args.Length >= 2)
-            {
-                var featureLink = args[0];
-                var index = featureLink.IndexOf("HUB");
-                var hub = featureLink.Substring(index);
-                var featureMsg = args[1];
+        // Cocona parses command-line and executes a command.
+        CoconaApp.Run<Program>(args);
+    }
 
-                Console.WriteLine(featureLink);
-                Console.WriteLine(GetFeatureBranch(hub, featureMsg));
-                Console.WriteLine(GetCommitMessage(hub, featureMsg));
-            }
-        }
+    public enum TaskTypes
+    {
+        Bugfix,
+        Feature
+    };
 
-        private static string GetCommitMessage(string hub, string featureMsg)
-        {
-            return $"{hub} - {featureMsg}";
-        }
+    public void Run([Argument]string featureLink, [Argument]string featureMsg, [Argument] TaskTypes taskType)
+    {
+        var index = featureLink.IndexOf("HUB");
+        var typeOfTask = taskType.Equals(TaskTypes.Feature) ? "feature/" : "bugfix/";
+        var hub = "HUB" + featureLink.Substring(index + 3).ToLower();
 
-        private static string GetFeatureBranch(string hub, string featureMsg)
-        {
-            var featureMsgBranch = string.Join('-', featureMsg.Split(' '));
-            return $"{hub}-{featureMsgBranch}";
-        }
+        Console.WriteLine(featureLink);
+        Console.WriteLine(GetFeatureBranch(typeOfTask + hub, featureMsg));
+        Console.WriteLine(GetCommitMessage(hub, featureMsg));
+    }
+
+    string GetCommitMessage(string hub, string featureMsg)
+    {
+        return $"{hub} - {featureMsg}";
+    }
+
+    string GetFeatureBranch(string hub, string featureMsg)
+    {
+        var featureMsgBranch = string.Join('-', featureMsg.Split(' '));
+        return $"{hub}-{featureMsgBranch.ToLower()}";
     }
 }
