@@ -4,6 +4,9 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
     <RootNamespace>git_links</RootNamespace>
+    <PackAsTool>true</PackAsTool>
+    <PackageOutputPath>./nupkg</PackageOutputPath>
+    <ToolCommandName>git-links</ToolCommandName>
   </PropertyGroup>
 
   <ItemGroup>
