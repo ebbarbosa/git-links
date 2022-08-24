@@ -9,10 +9,11 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/bin/Debug/net5.0/git-links.dll",
+            "program": "${workspaceFolder}/bin/Debug/net6.0/git-links.dll",
             "args": [
-                "HUB-1234",
-                "aqui tem teste"
+                "somelink/HUB-1234",
+                "aqui tem teste",
+                "Feature"
             ],
             "cwd": "${workspaceFolder}",
             "console": "internalConsole",
