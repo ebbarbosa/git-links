@@ -17,6 +17,12 @@
     <OutputPath>bin\Debug\net6.0</OutputPath>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="dev\**" />
+    <EmbeddedResource Remove="dev\**" />
+    <None Remove="dev\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Cocona" Version="2.0.3" />
   </ItemGroup>
 </Project>
