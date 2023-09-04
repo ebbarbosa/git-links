@@ -9,7 +9,7 @@ namespace git_links.UnitTests
         {
             var actual = @"Create release\5.0.0 branch for hub-authenticationserver#$%&".Sanitize();
 
-            var expected = "Create-release-5.0.0-branch-for-hub-authenticationserver----";
+            var expected = "Create-release-5.0.0-branch-for-hub-authenticationserver";
 
             Assert.Equal(expected, actual);
         }
@@ -18,6 +18,16 @@ namespace git_links.UnitTests
         public void Sanitize_Replaces_ForwardSlash_With_Dash()
         {
             var actual = "Create release/5.0.0 branch for hub-authenticationserver".Sanitize();
+
+            var expected = "Create-release-5.0.0-branch-for-hub-authenticationserver";
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void Sanitize_Replaces_DuplicatedDashes_With_SingleDash()
+        {
+            var actual = "Create release/5.0.0 //----branch for hub-authenticationserver".Sanitize();
 
             var expected = "Create-release-5.0.0-branch-for-hub-authenticationserver";
 
