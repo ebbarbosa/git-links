@@ -1,3 +1,7 @@
+# git-links
+
+## Simple project to create branch names and commit messages.
+
 https://learn.microsoft.com/en-us/dotnet/core/tools/global-tools-how-to-use
 
 ## After changes PACK
