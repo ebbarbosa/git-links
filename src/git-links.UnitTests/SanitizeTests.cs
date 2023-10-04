@@ -33,5 +33,21 @@ namespace git_links.UnitTests
 
             Assert.Equal(expected, actual);
         }
+
+        [Fact]
+        public void Sanitize_Replaces_Parameters_And_Apostrophes()
+        {
+            var actual = "Create release/5.0.0 //----don´t replace;: - [{,{replace this}}]} don´t do it, don`t do it, don't do it- branch name".Sanitize();
+
+            var expected = "Create-release-5.0.0-don-t-replace-replace-this-don-t-do-it-don-t-do-it-don-t-do-it-branch-name";
+
+            Assert.Equal(expected, actual);
+
+            actual = @"don\´t don\`t don\'t don\ t".Sanitize();
+
+            expected = "don-t-don-t-don-t-don-t";
+
+            Assert.Equal(expected, actual);
+        }
     }
 }

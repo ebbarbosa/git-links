@@ -5,6 +5,7 @@
         Bugfix,
         Feature,
         Cicd,
-        Tests
+        Tests,
+        Fix
     };
 }
