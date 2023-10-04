@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -8,21 +8,12 @@
     <PackageOutputPath>./nupkg</PackageOutputPath>
     <ToolCommandName>git-links</ToolCommandName>
   </PropertyGroup>
-
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <OutputPath>bin\Debug</OutputPath>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <OutputPath>bin\Debug\net6.0</OutputPath>
-  </PropertyGroup>
+  
   <ItemGroup>
-    <Compile Remove="dev\**" />
-    <EmbeddedResource Remove="dev\**" />
-    <None Remove="dev\**" />
+    <PackageReference Include="Cocona" Version="2.0.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Cocona" Version="2.0.3" />
+    <Folder Include="nupkg\" />
   </ItemGroup>
 </Project>

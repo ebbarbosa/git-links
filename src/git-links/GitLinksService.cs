@@ -24,13 +24,13 @@ namespace git_links
 
         public string GetCommitMessage()
         {
-            return $"{this.hub} - {this.featureMsg}";
+            return $"git commit -am \"{this.hub} - {this.featureMsg}\"";
         }
 
         public string GetFeatureBranch()
         {
             var featureMsgBranch = string.Join('-', this.featureMsg.Split(' '));
-            return $"{this.typeOfTask}{this.hub.Sanitize()}-{featureMsgBranch.ToLower().Sanitize()}";
+            return $"git checkout -b {this.typeOfTask}{this.hub.Sanitize()}-{featureMsgBranch.ToLower().Sanitize()}";
         }
     }
 

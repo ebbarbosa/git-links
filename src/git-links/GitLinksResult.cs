@@ -3,9 +3,9 @@
     public enum TaskTypes
     {
         Bugfix,
-        Feature
+        Feature,
+        Cicd,
+        Tests,
+        Fix
     };
-
-
-
 }

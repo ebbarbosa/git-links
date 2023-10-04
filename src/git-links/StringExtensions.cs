@@ -6,7 +6,13 @@ namespace git.links
     {
         public static string Sanitize(this string str)
         {
-            return Regex.Replace(str, @"[\s\\/$#%&]", "-");
+            var cleanString = Regex.Replace(str, @"[\s\\/$#%&'`´,;:\[\]\{\}]", " ");
+
+            cleanString = Regex.Replace(cleanString.TrimEnd().TrimStart(), @"\s+", "-");
+
+            cleanString = Regex.Replace(cleanString, @"-+", "-");
+
+            return cleanString;
         }
     }
 }
