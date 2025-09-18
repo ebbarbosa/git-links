@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace git.links
+namespace git_links
 {
     public static class StringExtensions
     {
