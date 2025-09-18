@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "git-links": {
+      "commandName": "Project",
+      "commandLineArgs": "\"HUB\"\r\n\"https://blueprism.atlassian.net/browse/HUB-6295\" \r\n\"Create release/5.0.0 branch for hub-authenticationserver \" \r\nFeature"
+    }
+  }
+}

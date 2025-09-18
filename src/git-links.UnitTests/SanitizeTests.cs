@@ -1,5 +1,3 @@
-using git.links;
-
 namespace git_links.UnitTests
 {
     public class SanitizeTests

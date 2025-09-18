@@ -1,24 +1,28 @@
-﻿using System;
-using Cocona;
-using git_links;
+﻿using Cocona;
+using System;
 
-namespace git.links
+namespace git_links
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             // Cocona parses command-line and executes a command.
             CoconaApp.Run<Program>(args);
         }
 
-        public void Run([Argument] string featureLink, [Argument] string featureMsg, [Argument] TaskTypes taskType)
+        [Command]
+        public void Run([Argument] string separator, [Argument] string taskLink, [Argument] string taskDesc, [Argument] TaskTypes taskType)
         {
-            var gitLinksService = new GitLinksService(featureLink, featureMsg, taskType);
+            var gitLinksService = new GitLinksServiceBuilder().WithSeparator(separator)
+                .WithLink(taskLink)
+                .WithDescription(taskDesc)
+                .WithType(taskType)
+                .Build();
 
             Console.WriteLine(gitLinksService.FeatureLink);
             Console.WriteLine(gitLinksService.GetFeatureBranch());
             Console.WriteLine(gitLinksService.GetCommitMessage());
-        }        
+        }
     }
 }
